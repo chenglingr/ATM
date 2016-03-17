@@ -110,6 +110,7 @@
     <Content Include="About.aspx" />
     <Content Include="Card\Add.aspx" />
     <Content Include="Card\List.aspx" />
+    <Content Include="Card\Login.aspx" />
     <Content Include="Card\Modify.aspx" />
     <Content Include="Card\Show.aspx" />
     <Content Include="Contact.aspx" />
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Card\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Card\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Card\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Card\Modify.aspx.cs">
       <DependentUpon>Modify.aspx</DependentUpon>

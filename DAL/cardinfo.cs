@@ -18,7 +18,7 @@ using System;
 using System.Data;
 using System.Text;
 using System.Data.SqlClient;
-
+using System.Text.RegularExpressions;
 namespace DAL
 {
 	/// <summary>
@@ -34,28 +34,50 @@ namespace DAL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(string cardID)
+		public bool Exists(string cardID,string pwd)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from cardinfo");
-			strSql.Append(" where cardID='"+cardID+"' ");
+			strSql.Append(" where cardID='"+cardID+ "' and pass='"+pwd+"'");
 			return DbHelperSQL.Exists(strSql.ToString());
 		}
 
-		/// <summary>
-		/// 增加一条数据
-		/// </summary>
-		public bool Add(Model.cardinfo model)
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public bool Add(Model.cardinfo model,out string cardID)
 		{
 			StringBuilder strSql=new StringBuilder();
 			StringBuilder strSql1=new StringBuilder();
 			StringBuilder strSql2=new StringBuilder();
-			if (model.cardID != null)
+
+            cardID = "";
+            //62212611  。1-6表示银行 7-8省份。9-15位才是自己的账户号，最后一位仍然是校验码  。中间7位
+
+            //获取最新的银行卡号。新卡的账号。是卡号9-15位的数字+1.。最后一位是随机数
+            string ss=  getMaxCardID();
+          
+            if (ss == "") { cardID = "622126110000001"; } //第一个开卡的人
+            else
+            { 
+                int   xx = int.Parse(ss.Substring(8, 7)) + 1;
+                if (xx == 10000000) { return false; }
+                cardID = ss.Substring(0, 8) + xx.ToString("D7");
+            }
+            Random r = new Random();
+            cardID = cardID + r.Next(0, 10);
+
+            model.cardID= cardID;
+
+            if (model.cardID != null)
 			{
 				strSql1.Append("cardID,");
 				strSql2.Append("'"+model.cardID+"',");
 			}
-			if (model.curType != null)
+
+           
+
+            if (model.curType != null)
 			{
 				strSql1.Append("curType,");
 				strSql2.Append("'"+model.curType+"',");
@@ -104,6 +126,17 @@ namespace DAL
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
 			if (rows > 0)
 			{
+                //增加交易记录
+                Model.transInfo t = new Model.transInfo();
+                t.cardID = model.cardID;
+                t.transDate = model.openDate;
+                t.transMoney = model.openMoney;
+                t.transType = "存入";
+                t.remark = "开户存入";
+
+                DAL.transInfo dalt = new DAL.transInfo();
+                dalt.Add(t);
+
 				return true;
 			}
 			else
@@ -111,6 +144,21 @@ namespace DAL
 				return false;
 			}
 		}
+        /// <summary>
+        /// 获取最新开卡人的账号
+        /// </summary>
+        /// <returns></returns>
+        public string getMaxCardID()
+        {
+            string s = "";
+            string sql = "select top 1 cardID from cardinfo order by openDate desc";
+            object obj=  DbHelperSQL.GetSingle(sql);
+            if (!Object.Equals(obj, null))
+            {
+                s = obj.ToString();
+            }
+            return s;
+        }
 
 		/// <summary>
 		/// 更新一条数据
@@ -118,7 +166,13 @@ namespace DAL
 		public bool Update(Model.cardinfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update cardinfo set ");
+
+
+
+           
+
+
+            strSql.Append("update cardinfo set ");
 			if (model.curType != null)
 			{
 				strSql.Append("curType='"+model.curType+"',");

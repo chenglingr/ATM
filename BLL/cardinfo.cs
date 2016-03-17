@@ -33,17 +33,17 @@ namespace BLL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(string cardID)
+		public bool Exists(string cardID,string pwd)
 		{
-			return dal.Exists(cardID);
+			return dal.Exists(cardID,pwd);
 		}
-
-		/// <summary>
-		/// 增加一条数据
-		/// </summary>
-		public bool Add(Model.cardinfo model)
+     
+        /// <summary>
+        /// 增加一条数据
+        /// </summary>
+        public bool Add(Model.cardinfo model,out string CardID)
 		{
-			return dal.Add(model);
+			return dal.Add(model,out CardID);
 		}
 
 		/// <summary>

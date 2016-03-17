@@ -36,6 +36,55 @@
 	<td height="45" width="*" align="left">
 		<asp:TextBox id="txtaddress" runat="server" Width="200px"></asp:TextBox>
 	</td></tr>
+
+    <tr>
+	<td height="45" width="30%" align="right">
+		</td>
+	<td height="45" width="*" align="left">
+		
+	</td></tr>
+	<tr>
+	<td height="45" width="30%" align="right">
+		货币类型
+	：</td>
+	<td height="45" width="*" align="left">
+        <asp:DropDownList ID="DropDownListcurType" Width="150" runat="server">
+            <asp:ListItem Selected="True" Value="RMB">人民币</asp:ListItem>
+            <asp:ListItem Value="dollor">美元</asp:ListItem>
+            <asp:ListItem Value="japan">日元</asp:ListItem>
+        </asp:DropDownList>
+       
+	</td></tr>
+	<tr>
+	<td height="45" width="30%" align="right">
+		卡类型
+	：</td>
+	<td height="45" width="*" align="left">
+		
+        <asp:DropDownList ID="DropDownListsavingType" Width="150" runat="server">
+            <asp:ListItem Selected="True">活期</asp:ListItem>
+            <asp:ListItem>定期</asp:ListItem>
+            <asp:ListItem>定活两便</asp:ListItem>
+        </asp:DropDownList>
+	</td></tr>
+	
+	<tr>
+	<td height="45" width="30%" align="right">
+		开户金额
+	：</td>
+	<td height="45" width="*" align="left">
+		<asp:TextBox id="txtopenMoney" TextMode="Number" runat="server" Width="200px"></asp:TextBox>
+	</td></tr>
+	
+	<tr>
+	<td height="45" width="30%" align="right">
+		密码
+	：</td>
+	<td height="45" width="*" align="left">
+		<asp:TextBox id="txtpass" runat="server" TextMode="Password" Width="200px"></asp:TextBox>
+	</td></tr>
+	
+	
 </table>
 
             </td>

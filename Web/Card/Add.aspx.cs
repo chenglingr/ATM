@@ -70,7 +70,8 @@ namespace Web.cardinfo
 			model.customerID=customerID;
 
 			BLL.cardinfo bll=new BLL.cardinfo();
-			bll.Add(model);
+            string CardID;
+            bll.Add(model,out CardID);
 			MessageBox.ShowAndRedirect(this,"保存成功！","add.aspx");
 
 		}
