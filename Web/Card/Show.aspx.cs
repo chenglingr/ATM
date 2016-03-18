@@ -13,17 +13,21 @@ namespace Web.cardinfo
 {
     public partial class Show : Page
     {        
-        		public string strid=""; 
+        public string strid=""; 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
 			{
-				if (Request.Params["id"] != null && Request.Params["id"].Trim() != "")
-				{
-					strid = Request.Params["id"];
-					string cardID= strid;
-					ShowInfo(cardID);
-				}
+                if (Session["CardID"] != null && Session["CardID"].ToString().Trim() != "")
+                {
+                    strid = Session["CardID"].ToString();
+                    string cardID = strid;
+                    ShowInfo(cardID);
+                }
+                else
+                {
+                    MessageBox.ShowAndRedirect(this, "请先登录账户", "Login.aspx");
+                }
 			}
 		}
 		
@@ -35,11 +39,11 @@ namespace Web.cardinfo
 		this.lblcurType.Text=model.curType;
 		this.lblsavingType.Text=model.savingType;
 		this.lblopenDate.Text=model.openDate.ToString();
-		this.lblopenMoney.Text=model.openMoney.ToString();
+	
 		this.lblbalance.Text=model.balance.ToString();
-		this.lblpass.Text=model.pass;
+	
 		this.lblIsReportLoss.Text=model.IsReportLoss?"是":"否";
-		this.lblcustomerID.Text=model.customerID.ToString();
+	
 
 	}
 

@@ -28,20 +28,67 @@ namespace DAL
 	{
 		public cardinfo()
 		{}
-		#region  Method
+        #region  Method
 
+        public bool UpdateBalance(string CardID, decimal MoneyNum)
+        {
+            //增加交易记录
+            Model.transInfo t = new Model.transInfo();
+            t.cardID = CardID;
+            t.transDate = DateTime.Now;
+            t.transMoney = Math.Abs(MoneyNum);
+            t.transType = "存入";
+            t.remark = "";
 
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		public bool Exists(string cardID,string pwd)
+         
+
+            string sql = "update  cardinfo set balance=balance+" + MoneyNum + " where cardID='" + CardID + "' and IsReportLoss=0";
+            if (MoneyNum < 0)
+            {
+                //先判断余额是否足
+                Model.cardinfo c  = GetModel(CardID);
+                if (c != null)
+                {
+                    if(c.balance<Math.Abs( MoneyNum))
+                    { return false; }
+                }
+                else
+                {
+                    return false;
+
+                }
+
+                t.transType = "支取";
+            }
+            if (DbHelperSQL.ExecuteSql(sql) >= 1)//存取款成功 则增加交易记录
+            {
+                DAL.transInfo dalt = new DAL.transInfo();
+                dalt.Add(t);
+                return true;
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string cardID,string pwd)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("select count(1) from cardinfo");
 			strSql.Append(" where cardID='"+cardID+ "' and pass='"+pwd+"'");
 			return DbHelperSQL.Exists(strSql.ToString());
 		}
-
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string cardID)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from cardinfo and IsReportLoss=0");
+            strSql.Append(" where cardID='" + cardID + "'");
+            return DbHelperSQL.Exists(strSql.ToString());
+        }
         /// <summary>
         /// 增加一条数据
         /// </summary>
@@ -166,12 +213,6 @@ namespace DAL
 		public bool Update(Model.cardinfo model)
 		{
 			StringBuilder strSql=new StringBuilder();
-
-
-
-           
-
-
             strSql.Append("update cardinfo set ");
 			if (model.curType != null)
 			{

@@ -29,11 +29,38 @@ namespace BLL
 		private readonly DAL.cardinfo dal=new DAL.cardinfo();
 		public cardinfo()
 		{}
-		#region  BasicMethod
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		public bool Exists(string cardID,string pwd)
+        #region  BasicMethod
+        public bool ZhuanZhang(string CardoutID,string CardInInID,decimal MoneyNum)
+        {
+
+            if (UpdateBalance(CardoutID, -MoneyNum))
+
+            {
+                if (!UpdateBalance(CardInInID, MoneyNum))
+                {
+                    UpdateBalance(CardoutID, MoneyNum);
+                }
+
+            }
+               
+            return true;
+         }
+
+       
+            /// <summary>
+            /// 存取款
+            /// </summary>
+            /// <param name="CardID"></param>
+            /// <param name="MoneyNum">负数为取款</param>
+            /// <returns></returns>
+        public bool UpdateBalance(string CardID, decimal MoneyNum)
+        {
+            return dal.UpdateBalance(CardID, MoneyNum);
+        }
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string cardID,string pwd)
 		{
 			return dal.Exists(cardID,pwd);
 		}

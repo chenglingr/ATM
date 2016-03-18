@@ -52,40 +52,32 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                          <li><a runat="server" href="~/User/Add.aspx">开户</a></li>
-                        <li><a runat="server" href="~/Card/Login.aspx">登录</a></li>
+                       
                         <li><a runat="server" href="~/About">取款</a></li>
                         <li><a runat="server" href="~/About">存款</a></li>
                          <li><a runat="server" href="~/About">转账</a></li>
-                         <li><a runat="server" href="~/About">查询余额</a></li>
-                         <li><a runat="server" href="~/About">修改密码</a></li>
+                         <li><a runat="server" href="~/Card/Show.aspx">查询余额</a></li>
+                     
                          <li><a runat="server" href="~/About">挂失</a></li>
                         <li><a runat="server" href="~/Contact">帮助
                         </a></li>
                     </ul>
                      <ul class="nav navbar-nav navbar-right">
                           <li>
-
-                             <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
- 
-                                <AnonymousTemplate>
- 
-                                    <a href="~/Card/Login.aspx" ID="HeadLoginStatus" runat="server">登录</a>
- 
-                                </AnonymousTemplate>
- 
-                                <LoggedInTemplate>
- 
-                                    欢迎您，<span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
- 
-                                    [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="注销" LogoutPageUrl="~/Default.aspx"/> ]
- 
-                                    [ <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutText="修改密码" LogoutPageUrl="~/Account/ChangePassword.aspx"/> ]
- 
-                                </LoggedInTemplate>
- 
-                            </asp:LoginView>
-
+                              <asp:HyperLink ID="HLLogin"  NavigateUrl="~/Card/Login.aspx" runat="server">登录</asp:HyperLink>
+                          </li>
+                         <li>
+                               <asp:HyperLink ID="HLADD"  NavigateUrl="~/User/Add.aspx" runat="server">注册</asp:HyperLink>
+                         </li>
+                         <li>
+                             <asp:Label CssClass="navbar-text" ID="LabelCardID"  Visible="false" runat="server" Text="Label"></asp:Label>                             
+                         </li>
+                         <li>
+                             
+                             <asp:LinkButton ID="HyperLinkOut" Visible="false"  runat="server" OnClick="HyperLinkOut_Click">注销</asp:LinkButton>
+                         </li>
+                         <li>
+                             <asp:HyperLink ID="HyperLinkPass"   Visible="false"  NavigateUrl="~/Card/Login.aspx" runat="server">修改密码</asp:HyperLink>
                           </li>
                      </ul>
                 </div>

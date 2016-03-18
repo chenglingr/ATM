@@ -34,13 +34,7 @@
 	<td height="45" width="*" align="left">
 		<asp:Label id="lblopenDate" runat="server"></asp:Label>
 	</td></tr>
-	<tr>
-	<td height="45" width="30%" align="right">
-		开户金额
-	：</td>
-	<td height="45" width="*" align="left">
-		<asp:Label id="lblopenMoney" runat="server"></asp:Label>
-	</td></tr>
+
 	<tr>
 	<td height="45" width="30%" align="right">
 		余额
@@ -48,13 +42,7 @@
 	<td height="45" width="*" align="left">
 		<asp:Label id="lblbalance" runat="server"></asp:Label>
 	</td></tr>
-	<tr>
-	<td height="45" width="30%" align="right">
-		密码
-	：</td>
-	<td height="45" width="*" align="left">
-		<asp:Label id="lblpass" runat="server"></asp:Label>
-	</td></tr>
+
 	<tr>
 	<td height="45" width="30%" align="right">
 		是否已挂失
@@ -62,13 +50,7 @@
 	<td height="45" width="*" align="left">
 		<asp:Label id="lblIsReportLoss" runat="server"></asp:Label>
 	</td></tr>
-	<tr>
-	<td height="45" width="30%" align="right">
-		客户号
-	：</td>
-	<td height="45" width="*" align="left">
-		<asp:Label id="lblcustomerID" runat="server"></asp:Label>
-	</td></tr>
+
 </table>
 
                     </td>
