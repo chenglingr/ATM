@@ -53,9 +53,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                        
-                        <li><a runat="server" href="~/About">取款</a></li>
-                        <li><a runat="server" href="~/About">存款</a></li>
-                         <li><a runat="server" href="~/About">转账</a></li>
+                        <li><a runat="server" href="~/Card/Money.aspx">取款</a></li>
+                        <li><a runat="server" href="~/Card/Money.aspx">存款</a></li>
+                         <li><a runat="server" href="~/Card/Money.aspx">转账</a></li>
                          <li><a runat="server" href="~/Card/Show.aspx">查询余额</a></li>
                      
                          <li><a runat="server" href="~/About">挂失</a></li>

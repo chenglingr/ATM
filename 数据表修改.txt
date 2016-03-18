@@ -1,0 +1,13 @@
+cardinfo表 [cardID] [varchar]  (16)
+
+transInfo表 [cardID] [varchar]  (16)
+
+银行卡号 16位。去掉卡号之间的空格。
+
+INSERT [cardinfo] ([cardID],[curType],[savingType],[openDate],[openMoney],[balance],[pass],[IsReportLoss],[customerID]) VALUES ( N'1010357612121134',N'RMB',N'定期',N'2016/3/13 18:02:32',1,1,N'888888',0,2)
+INSERT [cardinfo] ([cardID],[curType],[savingType],[openDate],[openMoney],[balance],[pass],[IsReportLoss],[customerID]) VALUES ( N'1010357612345678',N'RMB',N'活期',N'2016/3/13 18:01:32',1000,1000,N'888888',0,1)
+
+修改了数据表，为了便于生成银行卡卡号，对其他功能不影响 。
+
+
+也可以继续用以前的数据表。。原先的卡号每四位之间有个空格

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Money.aspx.cs" Inherits="Web.Card.Money" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-    <asp:Literal ID="Litnews" runat="server"></asp:Literal>
+    <asp:Literal ID="Litnews" runat="server" ></asp:Literal>
  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
