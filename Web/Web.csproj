@@ -109,8 +109,10 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Card\Add.aspx" />
+    <Content Include="Card\ChangePWD.aspx" />
     <Content Include="Card\List.aspx" />
     <Content Include="Card\Login.aspx" />
+    <Content Include="Card\Lost.aspx" />
     <Content Include="Card\Modify.aspx" />
     <Content Include="Card\Money.aspx" />
     <Content Include="Card\Show.aspx" />
@@ -195,6 +197,13 @@
     <Compile Include="Card\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Card\ChangePWD.aspx.cs">
+      <DependentUpon>ChangePWD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Card\ChangePWD.aspx.designer.cs">
+      <DependentUpon>ChangePWD.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Card\List.aspx.cs">
       <DependentUpon>List.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -208,6 +217,13 @@
     </Compile>
     <Compile Include="Card\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Card\Lost.aspx.cs">
+      <DependentUpon>Lost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Card\Lost.aspx.designer.cs">
+      <DependentUpon>Lost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Card\Modify.aspx.cs">
       <DependentUpon>Modify.aspx</DependentUpon>

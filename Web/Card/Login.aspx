@@ -17,7 +17,7 @@
 		密码
 	：</td>
 	<td height="45" width="*" align="left">
-		<asp:TextBox id="txtpass"  TextMode="Password" runat="server" Width="200px"></asp:TextBox>
+		<asp:TextBox id="txtpass"  TextMode="Password" MaxLength="6" runat="server" Width="200px"></asp:TextBox>
 	</td></tr>
 	
 </table>
@@ -32,7 +32,7 @@
                     onmouseout="this.className='inputbutton'" OnClick="btnSave_Click"></asp:Button>
                 <asp:Button ID="btnCancle" runat="server" Text="取消"
                   class="inputbutton" onmouseover="this.className='inputbutton_hover'"
-                    onmouseout="this.className='inputbutton'"></asp:Button>
+                    onmouseout="this.className='inputbutton'" OnClick="btnCancle_Click"></asp:Button>
             </td>
         </tr>
     </table>

@@ -34,5 +34,10 @@ namespace Web.Card
                 MessageBox.Show(this, "账号" + cardID + "登录失败，请重试");
             }
         }
+
+        protected void btnCancle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../default.aspx");
+        }
     }
 }

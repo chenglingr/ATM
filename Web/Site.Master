@@ -58,7 +58,7 @@
                          <li><a runat="server" href="~/Card/Money.aspx">转账</a></li>
                          <li><a runat="server" href="~/Card/Show.aspx">查询余额</a></li>
                      
-                         <li><a runat="server" href="~/About">挂失</a></li>
+                         <li><a runat="server" href="~/Card/Lost.aspx">挂失</a></li>
                         <li><a runat="server" href="~/Contact">帮助
                         </a></li>
                     </ul>
@@ -77,7 +77,7 @@
                              <asp:LinkButton ID="HyperLinkOut" Visible="false"  runat="server" OnClick="HyperLinkOut_Click">注销</asp:LinkButton>
                          </li>
                          <li>
-                             <asp:HyperLink ID="HyperLinkPass"   Visible="false"  NavigateUrl="~/Card/Login.aspx" runat="server">修改密码</asp:HyperLink>
+                             <asp:HyperLink ID="HyperLinkPass"   Visible="false"  NavigateUrl="~/Card/ChangePWD.aspx" runat="server">修改密码</asp:HyperLink>
                           </li>
                      </ul>
                 </div>

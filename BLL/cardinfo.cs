@@ -30,6 +30,19 @@ namespace BLL
 		public cardinfo()
 		{}
         #region  BasicMethod
+
+        public bool changePwd(string CardID, string oldPwd, string newPwd)
+        {
+            return dal.changePwd(CardID, oldPwd,newPwd);
+        }
+        public bool getState(string CardID)
+        {
+            return dal.getState(CardID);
+        }
+        public bool ChangeState(string CardID)
+        {
+            return dal.ChangeState(CardID);
+        }
         public bool ZhuanZhang(string CardoutID,string CardInInID,decimal MoneyNum)
         {
 

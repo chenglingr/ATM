@@ -30,6 +30,46 @@ namespace DAL
 		{}
         #region  Method
 
+
+        //获取挂失状态。
+        public bool getState(string CardID)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select IsReportLoss from cardinfo ");
+            strSql.Append(" where cardID='" + CardID + "'");
+            object r= DbHelperSQL.GetSingle(strSql.ToString());
+            bool re =false ;
+
+            string xxx = r.ToString();
+            if (r.ToString() =="True") { re = true; }
+            return re;
+        }
+
+        public bool changePwd(string CardID, string oldPwd, string newPwd)
+        {
+            string sql = "update  cardinfo set  pass='"+ newPwd + "' where cardID='" + CardID + "' and pass='"+oldPwd+"'";
+            int n = DbHelperSQL.ExecuteSql(sql);
+            if (n >= 1)
+            {
+                return true;
+            }
+            else
+            { return false; }
+        }
+
+        //更改状态。
+        public bool ChangeState(string CardID)
+        {
+
+            string sql = "update  cardinfo set  IsReportLoss=((IsReportLoss+1) % 2) where cardID='" + CardID + "'";
+            int n= DbHelperSQL.ExecuteSql(sql);
+            if (n >= 1)
+            {
+                return true;
+            }
+            else
+            { return false; }
+        }
         public bool UpdateBalance(string CardID, decimal MoneyNum)
         {
             //增加交易记录
@@ -85,7 +125,7 @@ namespace DAL
         public bool Exists(string cardID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select count(1) from cardinfo and IsReportLoss=0");
+            strSql.Append("select count(1) from cardinfo");
             strSql.Append(" where cardID='" + cardID + "'");
             return DbHelperSQL.Exists(strSql.ToString());
         }
