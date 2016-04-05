@@ -34,7 +34,7 @@ namespace DAL
         //获取挂失状态。
         public bool getState(string CardID)
         {
-            StringBuilder strSql = new StringBuilder();
+             StringBuilder strSql = new StringBuilder();
             strSql.Append("select IsReportLoss from cardinfo ");
             strSql.Append(" where cardID='" + CardID + "'");
             object r= DbHelperSQL.GetSingle(strSql.ToString());
